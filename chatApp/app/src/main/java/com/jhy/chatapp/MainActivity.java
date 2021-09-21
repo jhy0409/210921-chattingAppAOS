@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                                     Log.d(TAG, "🌈 stUserEmail: "+stUserEmail+" 🌈 stUserName : "+stUserName);
                                     
                                     Intent in = new Intent(MainActivity.this, ChatActivity.class);
+                                    in.putExtra("email", stEmail);
                                     startActivity(in);
                                 } else {
                                     // If sign in fails, display a message to the user.
