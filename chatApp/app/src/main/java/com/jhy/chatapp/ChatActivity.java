@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import org.w3c.dom.Comment;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Hashtable;
 
@@ -32,6 +33,7 @@ public class ChatActivity extends AppCompatActivity {
     Button btnSend;
     String stEmail;
     FirebaseDatabase database;
+    ArrayList<Chat> chatArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class ChatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
         database = FirebaseDatabase.getInstance();
 
+        chatArrayList = new ArrayList<>();
         stEmail = getIntent().getStringExtra("email");
         Button btnFinish = (Button)findViewById(R.id.btnFinish);
         btnSend = (Button)findViewById(R.id.btnSend);
@@ -57,7 +60,7 @@ public class ChatActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         String[] myDataset = {"test1", "test2", "test3", "test4"};
-        mAdapter = new MyAdapter(myDataset);
+        mAdapter = new MyAdapter(chatArrayList);
         recyclerView.setAdapter(mAdapter);
 
 
@@ -74,8 +77,8 @@ public class ChatActivity extends AppCompatActivity {
                 String stText = chat.getText();
                 Log.d(TAG, "🟢 stEmail: "+stEmail);
                 Log.d(TAG, "🟢 stText: "+stText);
-
-                // ...
+                chatArrayList.add(chat);
+                mAdapter.notifyDataSetChanged();
             }
 
             @Override
