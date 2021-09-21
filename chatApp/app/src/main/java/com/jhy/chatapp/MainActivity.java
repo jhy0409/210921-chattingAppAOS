@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     EditText etId, etPassword;
     private FirebaseAuth mAuth;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         etId = (EditText)findViewById(R.id.etId);
         etPassword = (EditText)findViewById(R.id.etPassword);
-
+        progressBar = (ProgressBar)findViewById(R.id.progressBar);
 
         Button btnLogin = (Button)findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -48,11 +50,13 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this,"Please insert Password", Toast.LENGTH_LONG).show();
                     return;
                 }
+                progressBar.setVisibility(View.VISIBLE);
 
                 mAuth.signInWithEmailAndPassword(stEmail, stPassword)
                         .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
+                                progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.d(TAG, "signInWithEmail:success");
@@ -88,16 +92,17 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this,"Please insert Email", Toast.LENGTH_LONG).show();
                     return;
                 }
-
                 if(stPassword.isEmpty()) {
                     Toast.makeText(MainActivity.this,"Please insert Password", Toast.LENGTH_LONG).show();
                     return;
                 }
+                progressBar.setVisibility(View.VISIBLE);
 //                Toast.makeText(MainActivity.this, "Email: "+stEmail+", stPassword : "+stPassword, Toast.LENGTH_LONG).show();
                 mAuth.createUserWithEmailAndPassword(stEmail, stPassword)
                         .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
+                                progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.d(TAG, "createUserWithEmail:success");
