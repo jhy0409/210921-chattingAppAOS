@@ -36,9 +36,45 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String stEmail = etId.getText().toString();
+                String stPassword = etPassword.getText().toString();
+
+                if(stEmail.isEmpty()) {
+                    Toast.makeText(MainActivity.this,"Please insert Email", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                if(stPassword.isEmpty()) {
+                    Toast.makeText(MainActivity.this,"Please insert Password", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                mAuth.signInWithEmailAndPassword(stEmail, stPassword)
+                        .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    // Sign in success, update UI with the signed-in user's information
+                                    Log.d(TAG, "signInWithEmail:success");
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    String stUserEmail = user.getEmail();
+                                    String stUserName = user.getDisplayName();
+                                    Log.d(TAG, "🌈 stUserEmail: "+stUserEmail+" 🌈 stUserName : "+stUserName);
+                                    
+                                    Intent in = new Intent(MainActivity.this, ChatActivity.class);
+                                    startActivity(in);
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    Log.w(TAG, "signInWithEmail:failure", task.getException());
+                                    Toast.makeText(MainActivity.this, "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+//                                    updateUI(null);
+                                }
+                            }
+                        });
+
 //                Toast.makeText(MainActivity.this,"Login",Toast.LENGTH_LONG).show();
-                Intent in = new Intent(MainActivity.this, ChatActivity.class);
-                startActivity(in);
+
             }
         });
 
