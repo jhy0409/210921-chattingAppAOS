@@ -23,28 +23,38 @@
             android:textSize="30sp" />
 
         <EditText
-            android:id="@+id/etLogin"
+            android:id="@+id/etEmail"
             android:layout_width="200dp"
             android:layout_height="40dp"
             android:layout_below="@+id/tvHello"
             android:background="@color/white"
-            android:hint="ID" />
+            android:hint="Email" />
 
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="200dp"
             android:layout_height="40dp"
-            android:layout_below="@+id/etLogin"
+            android:layout_below="@+id/etEmail"
             android:layout_marginTop="1dp"
             android:background="@color/white"
             android:hint="PASSWORD" />
+
+        <Button
+            android:text="Register"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnRegister"
+            android:layout_below="@+id/etPassword"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/purple_700"
+            />
 
         <Button
             android:text="Login"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:id="@+id/btnLogin"
-            android:layout_below="@+id/etPassword"
+            android:layout_below="@+id/btnRegister"
             android:layout_centerHorizontal="true"
             android:backgroundTint="@color/purple_700"
              />
