@@ -123,14 +123,11 @@ public class ChatActivity extends AppCompatActivity {
         ref.addChildEventListener(childEventListener);
 
 
-
-
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String stText = etText.getText().toString();
                 Toast.makeText(ChatActivity.this, "🌈 Mst : "+stText, Toast.LENGTH_LONG).show();
-
 
                 Calendar c = Calendar.getInstance();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyy-MM-dd hh:mm:ss");
@@ -144,6 +141,7 @@ public class ChatActivity extends AppCompatActivity {
                 numbers.put("email", stEmail);
                 numbers.put("text", stText);
                 myRef.setValue(numbers);
+                Log.d(TAG, "\n\n🌈🌈🌈 onClick: ");
             }
         });
 

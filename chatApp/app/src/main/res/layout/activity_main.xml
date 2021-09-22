@@ -27,6 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/etId"
         android:hint="ID"
+        android:text="test@gmail.com"
         android:inputType="textEmailAddress"
     />
 
@@ -39,6 +40,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/etPassword"
         android:hint="Password"
+        android:text="111111"
         android:inputType="textPassword"
         />
 
