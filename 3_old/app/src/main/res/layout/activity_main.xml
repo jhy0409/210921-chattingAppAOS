@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/design_default_color_primary"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello World!"
+            android:id="@+id/tvHello"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+             />
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:hint="ID"
+            android:id="@+id/etLogin"
+            android:background="@color/white"
+            android:layout_below="@+id/tvHello"
+            />
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="1dp"
+            android:hint="PASSWORD"
+            android:id="@+id/etPassword"
+            android:background="@color/white"
+            android:layout_below="@+id/etLogin"
+            />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etPassword"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/purple_700"
+            android:text="Button"
+            android:textAlignment="center" />
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
