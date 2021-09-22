@@ -4,11 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/chat_bubble.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_people_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_people_black_24dp.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_profile_black_24.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_chat.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1983695652173913" />
         <entry key="app/src/main/res/layout/activity_tap.xml" value="0.13768115942028986" />
         <entry key="app/src/main/res/layout/my_text_view.xml" value="0.13632246376811594" />
         <entry key="app/src/main/res/layout/right_text_view.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
       </map>
     </option>
   </component>

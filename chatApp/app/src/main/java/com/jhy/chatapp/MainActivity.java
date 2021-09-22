@@ -30,24 +30,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
-        etId = (EditText)findViewById(R.id.etId);
-        etPassword = (EditText)findViewById(R.id.etPassword);
-        progressBar = (ProgressBar)findViewById(R.id.progressBar);
+        etId = (EditText) findViewById(R.id.etId);
+        etPassword = (EditText) findViewById(R.id.etPassword);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
-        Button btnLogin = (Button)findViewById(R.id.btnLogin);
+        Button btnLogin = (Button) findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String stEmail = etId.getText().toString();
                 String stPassword = etPassword.getText().toString();
 
-                if(stEmail.isEmpty()) {
-                    Toast.makeText(MainActivity.this,"Please insert Email", Toast.LENGTH_LONG).show();
+                if (stEmail.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Please insert Email", Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                if(stPassword.isEmpty()) {
-                    Toast.makeText(MainActivity.this,"Please insert Password", Toast.LENGTH_LONG).show();
+                if (stPassword.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Please insert Password", Toast.LENGTH_LONG).show();
                     return;
                 }
                 progressBar.setVisibility(View.VISIBLE);
@@ -63,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     String stUserEmail = user.getEmail();
                                     String stUserName = user.getDisplayName();
-                                    Log.d(TAG, "🌈 stUserEmail: "+stUserEmail+" 🌈 stUserName : "+stUserName);
-                                    
+                                    Log.d(TAG, "🌈 stUserEmail: " + stUserEmail + " 🌈 stUserName : " + stUserName);
+
                                     Intent in = new Intent(MainActivity.this, TapActivity.class);
                                     in.putExtra("email", stEmail);
                                     startActivity(in);
@@ -83,18 +83,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btnRegister = (Button)findViewById(R.id.btnResigter);
+        Button btnRegister = (Button) findViewById(R.id.btnResigter);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String stEmail = etId.getText().toString();
                 String stPassword = etPassword.getText().toString();
-                if(stEmail.isEmpty()) {
-                    Toast.makeText(MainActivity.this,"Please insert Email", Toast.LENGTH_LONG).show();
+                if (stEmail.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Please insert Email", Toast.LENGTH_LONG).show();
                     return;
                 }
-                if(stPassword.isEmpty()) {
-                    Toast.makeText(MainActivity.this,"Please insert Password", Toast.LENGTH_LONG).show();
+                if (stPassword.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Please insert Password", Toast.LENGTH_LONG).show();
                     return;
                 }
                 progressBar.setVisibility(View.VISIBLE);
