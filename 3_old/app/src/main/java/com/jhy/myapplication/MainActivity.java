@@ -59,7 +59,11 @@ public class MainActivity extends AppCompatActivity {
                 stEmail = etEmail.getText().toString();
                 stPassword = etPassword.getText().toString();
                 //Toast.makeText(MainActivity.this, stEmail + ", " + stPassword, Toast.LENGTH_LONG).show();
-                registerUser(stEmail, stPassword);
+                if (stEmail.isEmpty() || stEmail.equals("") ||stPassword.isEmpty() || stPassword.equals("") ) {
+                    Toast.makeText(MainActivity.this, "입력하세요", Toast.LENGTH_LONG).show();
+                } else {
+                    registerUser(stEmail, stPassword);
+                }
             }
         });
 
