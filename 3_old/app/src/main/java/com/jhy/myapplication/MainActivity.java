@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     EditText etPassword;
     String stEmail;
     String stPassword;
+    ProgressBar pbLogin;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListner;
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         etEmail = (EditText) findViewById(R.id.etEmail);
         etPassword = (EditText) findViewById(R.id.etPassword);
+        pbLogin = (ProgressBar)findViewById(R.id.pbLogin);
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListner = new FirebaseAuth.AuthStateListener() {
@@ -102,10 +105,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void userLogin(String email, String password) {
+        pbLogin.setVisibility(View.VISIBLE);
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        pbLogin.setVisibility(View.GONE);
 //                        if (task.isSuccessful()) {
 //                            // Sign in success, update UI with the signed-in user's information
 //                        Log.d(TAG, "\n\n🌈🌈🌈 signInWithCustomToken:success");
